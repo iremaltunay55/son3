@@ -21,9 +21,9 @@ startCommand:
     required:
       - OPENWEATHER_API_KEY
   commandFunction: |
-    (config) => ({ 
-      command: 'python', 
-      args: ['-m', 'server'],
+    (config) => ({
+      command: 'python',
+      args: ['server.py'],
       env: {
         OPENWEATHER_API_KEY: config.OPENWEATHER_API_KEY
       }
@@ -66,7 +66,7 @@ examples:
     parameters:
       city_name: "Istanbul"
       country_code: "TR"
-  
+
   - title: "Koordinatlarla hava durumu"
     description: "Belirli enlem ve boylam koordinatlarının hava durumu"
     tool: "get_weather_by_coordinates"
@@ -80,15 +80,15 @@ documentation:
     1. OpenWeatherMap hesabı oluşturun: https://openweathermap.org/api
     2. Ücretsiz API key alın
     3. API key'i konfigürasyonda belirtin
-  
+
   usage: |
     Bu MCP server iki ana fonksiyon sağlar:
-    
+
     1. **get_weather_by_coordinates**: Enlem ve boylam koordinatlarıyla hava durumu
     2. **get_weather_by_city**: Şehir adıyla hava durumu
-    
+
     Tüm sıcaklık değerleri Celsius cinsinden döndürülür.
-  
+
   api_limits: |
     OpenWeatherMap ücretsiz planı:
     - Dakikada 60 çağrı

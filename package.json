@@ -1,0 +1,40 @@
+{
+  "name": "mastra-turkish-weather-agent",
+  "version": "1.0.0",
+  "description": "Türkçe hava durumu asistanı - Mastra framework ile geliştirilmiş",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "node dist/index.js",
+    "test": "tsx test.ts",
+    "lint": "mastra lint",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "mastra",
+    "weather",
+    "agent",
+    "turkish",
+    "ai",
+    "mcp",
+    "openweathermap"
+  ],
+  "author": "Beyza",
+  "license": "MIT",
+  "dependencies": {
+    "@mastra/core": "^0.1.0",
+    "@mastra/mcp": "^0.1.0",
+    "@ai-sdk/openai": "^0.0.66",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
