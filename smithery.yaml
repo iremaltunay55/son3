@@ -1,0 +1,101 @@
+name: weather-forecast-mcp
+description: "Enlem ve boylam koordinatlarına göre hava durumu bilgilerini getiren MCP server. OpenWeatherMap API kullanarak gerçek zamanlı sıcaklık, nem, basınç ve rüzgar bilgilerini sağlar."
+version: "1.0.0"
+author: "Beyza"
+license: "MIT"
+homepage: "https://github.com/yourusername/weather-forecast-mcp"
+repository: "https://github.com/yourusername/weather-forecast-mcp"
+
+# Smithery deployment konfigürasyonu
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    properties:
+      OPENWEATHER_API_KEY:
+        type: string
+        title: "OpenWeatherMap API Key"
+        description: "OpenWeatherMap API'sinden aldığınız API anahtarı. https://openweathermap.org/api adresinden ücretsiz hesap oluşturabilirsiniz."
+        format: password
+    required:
+      - OPENWEATHER_API_KEY
+  commandFunction: |
+    (config) => ({ 
+      command: 'python', 
+      args: ['-m', 'server'],
+      env: {
+        OPENWEATHER_API_KEY: config.OPENWEATHER_API_KEY
+      }
+    })
+  exampleConfig:
+    OPENWEATHER_API_KEY: "your_api_key_here"
+
+# MCP server özellikleri
+capabilities:
+  tools:
+    - name: "get_weather_by_coordinates"
+      description: "Enlem ve boylam koordinatlarına göre hava durumu bilgilerini getir"
+    - name: "get_weather_by_city"
+      description: "Şehir adına göre hava durumu bilgilerini getir"
+
+# Etiketler ve kategoriler
+tags:
+  - weather
+  - api
+  - forecast
+  - temperature
+  - climate
+  - openweathermap
+
+category: "Weather & Climate Data"
+
+# Minimum gereksinimler
+requirements:
+  python: ">=3.10"
+  packages:
+    - "mcp[cli]>=1.2.0"
+    - "httpx>=0.25.0"
+    - "python-dotenv>=1.0.0"
+
+# Kullanım örnekleri
+examples:
+  - title: "İstanbul'un hava durumu"
+    description: "İstanbul şehrinin mevcut hava durumu bilgilerini al"
+    tool: "get_weather_by_city"
+    parameters:
+      city_name: "Istanbul"
+      country_code: "TR"
+  
+  - title: "Koordinatlarla hava durumu"
+    description: "Belirli enlem ve boylam koordinatlarının hava durumu"
+    tool: "get_weather_by_coordinates"
+    parameters:
+      latitude: 41.0082
+      longitude: 28.9784
+
+# Dokümantasyon
+documentation:
+  setup: |
+    1. OpenWeatherMap hesabı oluşturun: https://openweathermap.org/api
+    2. Ücretsiz API key alın
+    3. API key'i konfigürasyonda belirtin
+  
+  usage: |
+    Bu MCP server iki ana fonksiyon sağlar:
+    
+    1. **get_weather_by_coordinates**: Enlem ve boylam koordinatlarıyla hava durumu
+    2. **get_weather_by_city**: Şehir adıyla hava durumu
+    
+    Tüm sıcaklık değerleri Celsius cinsinden döndürülür.
+  
+  api_limits: |
+    OpenWeatherMap ücretsiz planı:
+    - Dakikada 60 çağrı
+    - Ayda 1,000,000 çağrı
+    - Geçmiş veriler yok (sadece mevcut ve 5 günlük tahmin)
+
+# İletişim bilgileri
+support:
+  email: "your-email@example.com"
+  issues: "https://github.com/yourusername/weather-forecast-mcp/issues"
