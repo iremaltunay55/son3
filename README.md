@@ -17,6 +17,14 @@ Bu Model Context Protocol (MCP) server, enlem ve boylam koordinatlarını kullan
 
 ## 🚀 Kurulum
 
+### Installing via Smithery
+
+To install son3 for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@iremaltunay55/son3):
+
+```bash
+npx -y @smithery/cli install @iremaltunay55/son3 --client claude
+```
+
 ### 1. OpenWeatherMap API Key Alma
 
 1. [OpenWeatherMap](https://openweathermap.org/api) sitesine gidin
