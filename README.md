@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/iremaltunay55-son3-badge.png)](https://mseep.ai/app/iremaltunay55-son3)
+
 # Weather Forecast MCP Server
 
 Bu Model Context Protocol (MCP) server, enlem ve boylam koordinatlarını kullanarak OpenWeatherMap API'sinden gerçek zamanlı hava durumu bilgilerini getirir.
